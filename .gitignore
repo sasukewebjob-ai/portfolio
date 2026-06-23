@@ -1,0 +1,8 @@
+# 内部開発メモ（公開しない）
+CLAUDE.md
+
+# OS / エディタ
+Thumbs.db
+.DS_Store
+desktop.ini
+*.tmp
