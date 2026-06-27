@@ -91,6 +91,12 @@
   .pill .n{opacity:.6; margin-left:5px}
   .seg{display:flex; gap:7px; flex-wrap:wrap; align-items:center}
   .seg-label{font-family:var(--mono); font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:var(--muted)}
+  /* スマホ用：検索・絞り込みの折りたたみトグル（PCでは非表示・透明化） */
+  .filter-toggle{display:none; align-items:center; gap:10px; width:100%; padding:11px 4px; background:transparent; border:none; border-bottom:1.5px solid var(--line); font-family:var(--sans); font-size:14px; color:var(--ink); cursor:pointer}
+  .filter-toggle .ft-ico{color:var(--muted); font-size:15px}
+  .filter-toggle .ft-chev{margin-left:auto; color:var(--muted); transition:transform .25s}
+  .controls.open .filter-toggle .ft-chev{transform:rotate(180deg)}
+  .filter-body{display:contents}
 
   /* 業種から探す バンド */
   .byind{padding:clamp(34px,5vw,52px) 0 0}
@@ -198,10 +204,31 @@
   .colo b{color:var(--ink); font-family:var(--serif); font-size:15px; letter-spacing:0; display:block}
 
   @media (max-width:640px){
-    .cat-head{flex-wrap:wrap}
-    .cat-head .cnt{margin-left:0; width:100%}
-    .controls .wrap{gap:12px}
-    .grid{grid-template-columns:1fr}
+    /* 検索・絞り込み：スクロール追従させず、初期は折りたたむ */
+    .controls{position:static; backdrop-filter:none; background:transparent; border-top:none}
+    .controls .wrap{gap:0; flex-direction:column; align-items:stretch; padding-top:10px; padding-bottom:10px}
+    .filter-toggle{display:flex}
+    .filter-body{display:none; flex-direction:column; gap:14px; padding-top:14px}
+    .controls.open .filter-body{display:flex}
+    .search{flex:none; width:100%}
+    .byind{display:none}
+
+    /* カタログ：カードをやめてジャンル別の箇条書きに（タップで詳細） */
+    main{padding-top:18px}
+    .cat{margin-bottom:34px; scroll-margin-top:16px}
+    .cat-head{flex-wrap:wrap; margin-bottom:14px; padding-bottom:11px}
+    .cat-head .cnt{margin-left:0}
+    .ghost-no{display:none}
+    .grid{display:flex; flex-direction:column; gap:0; background:transparent; border:none}
+    .card{padding:14px 28px 14px 2px; border-bottom:1px solid var(--line)}
+    .card::before{display:none}
+    .card::after{content:"›"; position:absolute; right:6px; top:50%; transform:translateY(-50%); color:var(--muted); font-size:24px; line-height:1; font-family:var(--serif)}
+    .card:hover{background:transparent}
+    .card:active{background:color-mix(in srgb,var(--ink) 4%,transparent)}
+    .card-top{margin-bottom:5px}
+    .card h3{font-size:16.5px; line-height:1.4; margin-bottom:4px}
+    .card .lead{margin:0; font-size:12.5px; line-height:1.7; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:1; overflow:hidden}
+    .card .uses, .card .meta, .card .card-foot{display:none}
   }
   @media (prefers-reduced-motion:reduce){ *{animation:none!important} .reveal{opacity:1; transform:none} }
 </style>
@@ -221,13 +248,18 @@
 </div></header>
 
 <nav class="controls"><div class="wrap">
-  <div class="search">
-    <span class="ico">⌕</span>
-    <input id="q" type="search" placeholder="名前・技術・業種・用途で検索…" aria-label="検索" autocomplete="off">
-    <span class="key">/</span>
+  <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterBody">
+    <span class="ft-ico">⌕</span><span>検索・絞り込み</span><span class="ft-chev">▾</span>
+  </button>
+  <div class="filter-body" id="filterBody">
+    <div class="search">
+      <span class="ico">⌕</span>
+      <input id="q" type="search" placeholder="名前・技術・業種・用途で検索…" aria-label="検索" autocomplete="off">
+      <span class="key">/</span>
+    </div>
+    <div class="seg"><span class="seg-label">分類</span><div class="filters" id="catFilters"></div></div>
+    <div class="seg"><span class="seg-label">状態</span><div class="filters" id="statusFilters"></div></div>
   </div>
-  <div class="seg"><span class="seg-label">分類</span><div class="filters" id="catFilters"></div></div>
-  <div class="seg"><span class="seg-label">状態</span><div class="filters" id="statusFilters"></div></div>
 </div></nav>
 
 <div class="byind wrap">
@@ -449,6 +481,16 @@ const PROJECTS = [
           'イベント主催 → 単発セミナーの参加申込専用ページ'],
    detail:{problem:'入会・申込の受け皿となるページがなく、興味を持った人を取りこぼしていた。',
            result:'SVGアイコン化・スマホ最適化・申込導線の改善まで施した1枚LPを公開した。'}},
+  {title:'AI・DXコンサルLP', cat:'web', status:'public',
+   lead:'法人向けAI・DX導入支援のLP。名刺裏のQRから読んでもらう営業導線として制作。',
+   target:'AI・DX導入を検討する法人・事業者', tech:'HTML / CSS（レスポンシブ）/ GitHub Pages',
+   url:'https://sasukewebjob-ai.github.io/ai-dx-consulting/',
+   tags:['corp','legal','gov'],
+   cases:['中小企業 → AI・DX相談の入口になる1枚LP',
+          '士業 → サービス内容と問合せ導線の紹介ページ',
+          '自治体・団体 → DX支援メニューの案内ページ'],
+   detail:{problem:'AI・DX支援の中身と相談導線を伝える場がなく、名刺だけでは伝わりにくかった。',
+           result:'名刺裏のQRから飛べるLPを制作。サービス内容と問合せ導線を1ページに集約した。'}},
   {title:'事業者チームHP制作', cat:'web', status:'plan',
    lead:'事業者メンバーのチームページをWordPress + SWELLで構築（約50ページ想定）。',
    target:'事業者コミュニティ', tech:'WordPress / SWELLテーマ / 固定ページ親子構成（約50ページ設計）',
@@ -470,10 +512,10 @@ const PROJECTS = [
            result:'WXR形式でページ・記事・画像を移行しSWELLテーマで再構築。WP API用スクリプトで投稿の調整も自動化した。'}},
 
   // 🎮 ゲーム・エンタメ
-  {title:'2Dアクションゲーム（第2弾・全8ワールド）', cat:'game', status:'public',
+  {title:'2Dアクションゲーム（第2弾・全8ワールド）', cat:'game', status:'done',
    lead:'全8ワールドのアクションゲーム。クッパ2形態・氷／砂漠／飛行船など多彩なギミック。',
    target:'趣味・実験', tech:'Vite / バニラJS / Canvas 2D / ステージデータ駆動設計',
-   url:'https://sasukewebjob-ai.github.io/mario-game-v2/',
+   url:null,
    tags:['gov','corp','event'],
    cases:['自治体PR → 名所をステージ化したご当地探検アクション',
           '企業周年イベント → 自社史を8ワールドで辿る記念ゲーム',
@@ -483,7 +525,7 @@ const PROJECTS = [
   {title:'2Dアクションゲーム（初代）', cat:'game', status:'done',
    lead:'単一HTMLで動くアクションゲーム。v2の原型。',
    target:'趣味・実験', tech:'バニラJS / Canvas 2D / 単一HTMLファイル',
-   url:'https://sasukewebjob-ai.github.io/mario-game-classic/',
+   url:null,
    tags:['retail','corp','education'],
    cases:['店舗販促 → QR配布の軽量ミニゲームでクーポン獲得',
           '採用イベント → 学生に配る自社世界観の体験版ゲーム',
@@ -723,6 +765,12 @@ indChips.addEventListener('click',e=>{ const b=e.target.closest('.chip'); if(!b)
   if(activeTag!=='all') document.getElementById('archive').scrollIntoView({behavior:'smooth',block:'start'}); });
 const qEl=document.getElementById('q');
 qEl.addEventListener('input',()=>{ query=qEl.value.trim().toLowerCase(); apply(); });
+const filterToggle=document.getElementById('filterToggle');
+if(filterToggle){ filterToggle.addEventListener('click',()=>{
+  const c=filterToggle.closest('.controls');
+  const open=c.classList.toggle('open');
+  filterToggle.setAttribute('aria-expanded', open?'true':'false');
+}); }
 
 /* ── モーダル（ケーススタディ） ── */
 const modal = document.getElementById('modal');
