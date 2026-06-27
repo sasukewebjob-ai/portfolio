@@ -738,6 +738,10 @@ function cardNode(p){
       h('div',{class:'row'}, h('span',{class:'k',text:'For'}),   h('span',{class:'v',text:p.target})),
       h('div',{class:'row'}, h('span',{class:'k',text:'Stack'}), h('span',{class:'v',text:p.tech}))
     ),
+    p.change ? h('div',{class:'chg'},
+      h('div',{class:'chg-h'}, h('span',{class:'jp',text:'変わったこと'})),
+      h('div',{class:'chg-row chg-b'}, h('span',{class:'lab',text:'以前'}), h('span',{class:'t',text:p.change.before})),
+      h('div',{class:'chg-row chg-a'}, h('span',{class:'lab',text:'今'}),  h('span',{class:'t',text:p.change.after}))) : null,
     h('div',{class:'uses'}, h('div',{class:'uses-h'}, h('span',{class:'jp',text:'こんな業務でも'})), usesList(p.cases)),
     h('div',{class:'card-foot'}, left, h('span',{class:'more'}, '詳しく ＋'))
   );
@@ -839,6 +843,10 @@ function openModal(p){
     h('div',{class:'m-no', text:'No.'+p._no+' ／ '+catJp(p.cat)}),
     statusBadge(p,'m-status'),
     h('h2',{text:p.title}),
+    p.change ? h('div',{class:'chg'},
+      h('div',{class:'chg-h'}, h('span',{class:'jp',text:'変わったこと'})),
+      h('div',{class:'chg-row chg-b'}, h('span',{class:'lab',text:'以前'}), h('span',{class:'t',text:p.change.before})),
+      h('div',{class:'chg-row chg-a'}, h('span',{class:'lab',text:'今'}),  h('span',{class:'t',text:p.change.after}))) : null,
     section('課題', d.problem || '—'),
     section('つくったもの', p.lead),
     section('成果', d.result || '—'),
