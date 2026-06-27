@@ -157,6 +157,19 @@
   .uses-list .ind{color:var(--ink); font-weight:500; border-bottom:1.5px solid var(--shu-tint)}
   .card .uses{margin:0 0 18px}
 
+  /* 変わったこと（Before → After） */
+  .chg{margin:0 0 18px; padding:13px 14px; background:color-mix(in srgb,var(--shu) 4%,transparent); border:1px solid var(--shu-tint); border-radius:7px}
+  .chg-h{font-family:var(--mono); font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--shu); display:flex; align-items:center; gap:9px; margin-bottom:10px}
+  .chg-h .jp{font-family:var(--sans); font-weight:700; letter-spacing:.04em; font-size:11.5px; text-transform:none}
+  .chg-h::after{content:""; flex:1; height:1px; background:linear-gradient(90deg,var(--shu-tint),transparent)}
+  .chg-row{display:flex; gap:9px; align-items:baseline; font-size:12px; line-height:1.6; padding:3px 0}
+  .chg-row .lab{flex:none; font-family:var(--mono); font-size:9px; letter-spacing:.06em; padding:1.5px 7px; border-radius:3px; position:relative; top:-1px}
+  .chg-b .lab{color:var(--muted); border:1px solid var(--line); background:var(--paper-card)}
+  .chg-b .t{color:var(--ink-2)}
+  .chg-a{margin-top:1px}
+  .chg-a .lab{color:#fff; background:var(--shu); border:1px solid var(--shu)}
+  .chg-a .t{color:var(--ink); font-weight:500}
+
   .card-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:6px}
   .go{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--shu); text-decoration:none}
   .go .arr{transition:transform .3s}
@@ -228,7 +241,7 @@
     .card-top{margin-bottom:5px}
     .card h3{font-size:16.5px; line-height:1.4; margin-bottom:4px}
     .card .lead{margin:0; font-size:12.5px; line-height:1.7; display:-webkit-box; -webkit-box-orient:vertical; -webkit-line-clamp:1; overflow:hidden}
-    .card .uses, .card .meta, .card .card-foot{display:none}
+    .card .uses, .card .meta, .card .card-foot, .card .chg{display:none}
   }
   @media (prefers-reduced-motion:reduce){ *{animation:none!important} .reveal{opacity:1; transform:none} }
 </style>
@@ -308,7 +321,7 @@ const PROJECTS = [
           '社内卓球部 → 部内リーグの勝敗からランキングを自動集計',
           'eスポーツ部 → 大会のセットスコアを記録し戦績を蓄積'],
    detail:{problem:'試合のスコアを紙やホワイトボードで管理しており、記録が残らず後から振り返れなかった。',
-           result:'スマホだけで記録・履歴閲覧が完結。オフラインでも使え、サークルや大会の戦績が蓄積される。'}},
+           result:'スマホだけで記録・履歴閲覧が完結。オフラインでも使え、サークルや大会の戦績が蓄積される。'}, change:{before:'スコアを紙やホワイトボードで管理し記録が残らない',after:'スマホで記録から履歴閲覧まで完結し戦績が蓄積'}},
   {title:'バドミントンコート割', cat:'badminton', status:'public',
    lead:'メンバーをコートへ自動振り分け。ペアごと移動・プリセット保持に対応。',
    target:'バドミントンサークル運営', tech:'バニラJS / 単一HTML / localStorage / PWA',
@@ -318,7 +331,7 @@ const PROJECTS = [
           '社内会議 → 参加者を複数会議室へ自動でグループ分け',
           '学習塾 → 生徒を講師ブースへ割当て座席表を即作成'],
    detail:{problem:'毎回の練習でメンバーをコートへ手作業で振り分けるのが煩雑で、待ち時間や偏りが起きていた。',
-           result:'ペア単位の移動やプリセット保持に対応し、振り分けが数タップに短縮された。'}},
+           result:'ペア単位の移動やプリセット保持に対応し、振り分けが数タップに短縮された。'}, change:{before:'毎回手作業でメンバーをコート振り分け、待ち時間や偏り発生',after:'ペア移動やプリセット保持で振り分けが数タップに短縮'}},
   {title:'伊那市バド交流会 Web申込', cat:'badminton', status:'live',
    lead:'交流会のWeb申込システム。控えメール送信・参加料集計まで自動化（第13回稼働）。',
    target:'伊那市バドミントンクラブ／参加者', tech:'HTML（申込フォーム）/ Google Apps Script / スプレッドシート集計 / 自動返信メール',
@@ -327,7 +340,7 @@ const PROJECTS = [
           '地域セミナー → 申込と同時に控えメールを自動返信',
           '飲食店 → 貸切宴会の出欠と人数・会費をフォーム集計'],
    detail:{problem:'紙やメールでの申込集計と参加料管理が手間で、抜け漏れや集計ミスが起きやすかった。',
-           result:'Web申込→控えメール自動返信→参加料の自動集計まで一気通貫。第13回大会で本番稼働中。'}},
+           result:'Web申込→控えメール自動返信→参加料の自動集計まで一気通貫。第13回大会で本番稼働中。'}, change:{before:'紙やメール申込の集計・参加料管理が手作業でミス頻発',after:'Web申込→控えメール返信→参加料集計まで自動化'}},
   {title:'バドミントンチーム運営AI', cat:'badminton', status:'active',
    lead:'チーム運営を支える仮想チーム。11部門19エージェントをピクセルオフィスで可視化。',
    target:'バドミントンチーム運営', tech:'Claude Code / 多エージェント構成 / Hooks連携 / 可視化ダッシュボード',
@@ -336,7 +349,7 @@ const PROJECTS = [
           '個人事業主 → 営業・事務の仮想チームで一人運営を補完',
           'NPO団体 → 広報・会計担当AIで少人数の事務を肩代わり'],
    detail:{problem:'チーム運営の判断や作業が特定の人に集中し、相談先や役割分担が不足していた。',
-           result:'11部門19体のAIが役割分担して相談に応答。稼働状況をピクセルオフィスで可視化した。'}},
+           result:'11部門19体のAIが役割分担して相談に応答。稼働状況をピクセルオフィスで可視化した。'}, change:{before:'運営の判断や作業が特定の人に集中、相談先や役割分担が不足',after:'11部門19体のAIが役割分担して相談に応答、稼働を可視化'}},
   {title:'スコアシート作成ツール', cat:'badminton', status:'active',
    lead:'リーグ表のスクショから、R8書式のスコアシート（試合ごと1枚）を自動量産。',
    target:'大会運営・主審', tech:'Claudeスキル / Python（openpyxl）/ xlsx・PDF自動生成',
@@ -345,7 +358,7 @@ const PROJECTS = [
           '製造現場 → 検査データを試料ごと1枚の帳票に自動化',
           '大会運営 → 対戦表から試合別スコアシートを一括作成'],
    detail:{problem:'大会のたびに規定書式のスコアシートを手作業で人数分つくるのが重労働だった。',
-           result:'リーグ表のスクショから試合ごと1枚のシートをExcel／PDFで自動量産できるようにした。'}},
+           result:'リーグ表のスクショから試合ごと1枚のシートをExcel／PDFで自動量産できるようにした。'}, change:{before:'大会ごとに規定書式のスコアシートを手作業で人数分作成',after:'スクショから試合別シートをExcel／PDFで自動量産'}},
 
   {title:'バドミントン出欠名簿', cat:'badminton', status:'public',
    lead:'練習日ごとの出欠をスマホのタップで記録するPWA名簿アプリ。',
@@ -356,7 +369,7 @@ const PROJECTS = [
           '学習塾 → 講習の出席を生徒別カレンダーで管理',
           '町内会 → 行事参加者の出欠をスマホで集計・保存'],
    detail:{problem:'出欠をExcelや紙で管理しており、スマホでその場で付けられず転記も手間だった。',
-           result:'名前×日付のセルをタップするだけで出欠を記録。PWA化でアプリ風に起動し、端末内へ自動保存される。'}},
+           result:'名前×日付のセルをタップするだけで出欠を記録。PWA化でアプリ風に起動し、端末内へ自動保存される。'}, change:{before:'出欠を紙やExcelで管理、その場で付けられず転記も手間',after:'名前×日付をタップで出欠記録、端末内へ自動保存'}},
   {title:'バドミントンコート番号アプリ', cat:'badminton', status:'public',
    lead:'ダブルスの対戦組合せ（ペア・相手・休み）を節ごとに自動生成。休み回数も均等化。',
    target:'バドミントンクラブ・サークル', tech:'バニラJS / 単一HTML / 組合せ最適化（局所探索）/ URL共有リンク',
@@ -366,7 +379,7 @@ const PROJECTS = [
           'テニススクール → 受講者の組合せと休みを均等に配分',
           '社内サークル → 当日参加者で総当たり戦を即生成・共有'],
    detail:{problem:'ダブルスの対戦相手・ペア・休みを手作業で組むと偏りが出やすく、毎回時間がかかっていた。',
-           result:'節数や休み順を選ぶだけで休み回数を均等化し、対戦の偏りを抑えた組合せを自動生成。共有リンクで全員が閲覧できる。'}},
+           result:'節数や休み順を選ぶだけで休み回数を均等化し、対戦の偏りを抑えた組合せを自動生成。共有リンクで全員が閲覧できる。'}, change:{before:'ダブルスの組合せを手作業で組み、偏りと手間が発生',after:'節数を選ぶだけで休み均等・偏りを抑えた組合せを自動生成'}},
   {title:'大会組合せ検証ツール', cat:'badminton', status:'done',
    lead:'大会のチーム×ペア組合せの公平性（ポイント均等・勝数バランス等）を自動検証するツール。',
    target:'大会運営者', tech:'Python / openpyxl（Excel解析）/ 公平性スコアリング',
@@ -375,7 +388,7 @@ const PROJECTS = [
           'スポーツ大会 → 対戦表の公平性を数値で自動検証',
           'リーグ戦企画 → 27大会分のデータで組分けを診断'],
    detail:{problem:'チーム内ペアの組合せをポイントや勝数が均等になるよう手作業で設計・検算しており負担が大きかった。',
-           result:'Excelの組合せ表を読み込み、ポイント均等性・勝数バランス・構成の偏りを自動検証。27大会分のデータで確認した。'}},
+           result:'Excelの組合せ表を読み込み、ポイント均等性・勝数バランス・構成の偏りを自動検証。27大会分のデータで確認した。'}, change:{before:'ペア組合せをポイント均等になるよう手作業で設計・検算',after:'Excel表を読込み均等性・勝数バランスを自動検証'}},
 
   // 🤖 業務自動化・AI活用
   {title:'LINEタスク管理自動化', cat:'automation', status:'live',
@@ -386,7 +399,7 @@ const PROJECTS = [
           '訪問介護 → ヘルパーへ訪問予定を割当て期限前に通知',
           '美容室 → スタッフへ開店準備・清掃を担当別に通知'],
    detail:{problem:'タスクの依頼や期限管理が口頭やバラバラのツールで、抜け漏れと催促の手間が常にあった。',
-           result:'LINE上で登録・通知・期限前リマインドが回り、担当者10名が日常利用。テスト168件パスで本番稼働。'}},
+           result:'LINE上で登録・通知・期限前リマインドが回り、担当者10名が日常利用。テスト168件パスで本番稼働。'}, change:{before:'口頭やバラバラのツールでタスク依頼、抜け漏れと催促の手間が常態化',after:'LINEで登録・通知・期限前リマインドが自動で回り担当10名が日常利用'}},
   {title:'面談リマインド自動通知', cat:'automation', status:'live',
    lead:'カレンダー予定を検知し、面談の予約〜直前まで6種類のLINE通知を自動送信。',
    target:'コーチング事業の運営・面談者', tech:'Google Apps Script / Googleカレンダー連携 / LINE通知 / 時間トリガー',
@@ -395,7 +408,7 @@ const PROJECTS = [
           '不動産 → 内見予約を客と担当へ前日・直前に通知',
           '整体院 → 初回カウンセリングの予約確認を自動送信'],
    detail:{problem:'面談の予約・変更・リマインドを人が手作業で連絡しており、抜けやタイミング遅れが発生していた。',
-           result:'カレンダー検知で予約〜直前まで6種類のLINE通知を自動送信。現在も本番稼働中。'}},
+           result:'カレンダー検知で予約〜直前まで6種類のLINE通知を自動送信。現在も本番稼働中。'}, change:{before:'面談の予約・変更・リマインドを手作業連絡、抜けや遅れが発生',after:'カレンダー検知で予約〜直前まで6種のLINE通知を自動送信'}},
   {title:'SEO記事 自動執筆システム', cat:'automation', status:'active',
    lead:'キーワードから上位記事分析・構成設計・並列執筆・二段校閲・画像生成・WordPress下書き投稿まで全自動。',
    target:'SEO記事制作（自社・クライアント）', tech:'Claude Code / 並列サブエージェント執筆 / WebFetch（上位記事分析）/ 二段校閲 / 画像生成API / WordPress REST API',
@@ -404,7 +417,7 @@ const PROJECTS = [
           '士業事務所 → 相談KWから解説コラムをWPへ自動投稿',
           'ECショップ → 商品KWから集客ブログを構成〜校閲まで量産'],
    detail:{problem:'検索上位を狙う記事は構成設計・執筆・校閲・画像用意・入稿に多くの工数と熟練が必要だった。',
-           result:'根津式の手順を体系化し、キーワードから上位記事分析〜構成〜並列執筆〜二段校閲〜画像生成〜WordPress下書き投稿までを一気通貫で自動化した。'}},
+           result:'根津式の手順を体系化し、キーワードから上位記事分析〜構成〜並列執筆〜二段校閲〜画像生成〜WordPress下書き投稿までを一気通貫で自動化した。'}, change:{before:'上位記事は構成・執筆・校閲・画像・入稿に多工数と熟練',after:'KWから分析〜執筆〜校閲〜画像〜下書き投稿まで自動'}},
   {title:'スライド作成システム', cat:'automation', status:'active',
    lead:'ウェビナー級のpptxを自動生成。独自の3層QAで品質を担保。',
    target:'資料・セミナー制作', tech:'Claude Code / python-pptx（公式skill）/ 独自3層QAパイプライン',
@@ -413,7 +426,7 @@ const PROJECTS = [
           '保険代理店 → 商品説明資料を顧客向けに一括自動作成',
           '製造業 → 安全教育や手順説明の社内研修資料を量産'],
    detail:{problem:'資料作成に時間がかかり、品質も作る人によってばらついていた。',
-           result:'テーマ入力でウェビナー級のpptxを生成し、独自の3層QAで品質を一定以上に担保できるようにした。'}},
+           result:'テーマ入力でウェビナー級のpptxを生成し、独自の3層QAで品質を一定以上に担保できるようにした。'}, change:{before:'資料作成に時間がかかり、品質も作る人で差',after:'テーマ入力でウェビナー級資料を自動生成、品質も一定'}},
   {title:'見積書ツール', cat:'automation', status:'active',
    lead:'手書き見積PDFを読み取り、過去707品目の辞書と照合してExcel見積書を自動生成。',
    target:'建設会社（社内）', tech:'Python（openpyxl）/ 707品目の単価辞書DB / PDF読み取り（Claude）',
@@ -422,7 +435,7 @@ const PROJECTS = [
           '設備工事 → 過去単価辞書と照合し見積作成を時短',
           '製造業 → 部品名と単価DBを突合し見積をミスなく作成'],
    detail:{problem:'手書き見積をExcelに清書する作業に時間がかかり、単価のばらつきや転記ミスもあった。',
-           result:'スキャンPDFを読み取り過去707品目の単価辞書と照合し、Excel見積書を自動生成。社内で稼働中。'}},
+           result:'スキャンPDFを読み取り過去707品目の単価辞書と照合し、Excel見積書を自動生成。社内で稼働中。'}, change:{before:'手書き見積をExcel清書、転記ミスや単価のばらつき',after:'PDFを707品目辞書と照合しExcel見積書を自動生成'}},
   {title:'マーケ仕組み化AI', cat:'automation', status:'plan',
    lead:'属人化したマーケのノウハウと進行管理をAI化する、仕組み化の構想。',
    target:'マーケティング会社', tech:'Claude API / Webアプリ（構想）/ ノウハウ知識ベース設計',
@@ -431,7 +444,7 @@ const PROJECTS = [
           'コールセンター → 応対ノウハウを集約し自走を支援',
           '多店舗小売 → 売れ筋判断や接客手順を仕組み化し共有'],
    detail:{problem:'マーケのノウハウや判断基準が一部の人に属人化し、採用・育成コストが増大していた。',
-           result:'ノウハウと進行管理をAI化し誰でも質問・自走できる構想。ツール選定・費用試算まで完了（構想段階）。'}},
+           result:'ノウハウと進行管理をAI化し誰でも質問・自走できる構想。ツール選定・費用試算まで完了（構想段階）。'}, change:{before:'マーケのノウハウが属人化し採用・育成コスト増大',after:'ノウハウと進行管理をAI化し誰でも質問・自走できる構想'}},
   {title:'根津AIエージェント', cat:'automation', status:'plan',
    lead:'自身の業務を担うAIエージェント構想。題材を分析しながら検討中。',
    target:'根津さん本人', tech:'Claude / エージェント構成（検討中）/ 外部ツール連携',
@@ -440,7 +453,7 @@ const PROJECTS = [
           '士業 → 判例や制度の下調べをエージェントに依頼',
           '個人事業主 → 定型の事務作業や調査を専属AIに委任'],
    detail:{problem:'調査・意思決定・定型作業など、本人にしかできない業務に時間が奪われていた。',
-           result:'それらを肩代わりする専属AIエージェントを検討中。目的の特定から設計を進める段階。'}},
+           result:'それらを肩代わりする専属AIエージェントを検討中。目的の特定から設計を進める段階。'}, change:{before:'調査・意思決定・定型作業に本人の時間が奪われる状態',after:'業務を肩代わりする専属AIエージェントを設計検討中'}},
 
   {title:'自作ローカルAI（DX相談特化）', cat:'automation', status:'done',
    lead:'PC上で動く自作AI。AI活用・DX相談に特化し、追加課金ゼロで使えるローカルLLM。',
@@ -450,7 +463,7 @@ const PROJECTS = [
           '製造業 → 機密を外部に出さず手元のAIで業務相談',
           '個人事業主 → 月額ゼロの専属AIをいつでも相談役に'],
    detail:{problem:'クラウドAIは月額費用や情報漏えいの不安があり、気軽に何度も相談しづらかった。',
-           result:'Ollama+gemma3:12bで自作モデルを構築。AI/DX相談に特化し専門外は要点だけ返す人格付け。追加課金ゼロで手元で動く。'}},
+           result:'Ollama+gemma3:12bで自作モデルを構築。AI/DX相談に特化し専門外は要点だけ返す人格付け。追加課金ゼロで手元で動く。'}, change:{before:'クラウドAIは月額費用や漏えい不安で気軽に相談しづらい',after:'追加課金ゼロの自作ローカルAIで漏えい不安なく何度でも相談'}},
   {title:'Instagramリール自動生成', cat:'automation', status:'done',
    lead:'画像・動画・BGMを渡すと、15/30/60秒のおしゃれなInstagramリールを自動で書き出す。',
    target:'SNS運用・動画制作', tech:'Remotion 4（React/TSX）/ FFmpeg / Python / ヘッドレスChromium書き出し',
@@ -459,7 +472,7 @@ const PROJECTS = [
           '美容サロン → 施術ビフォーアフターを縦型動画に編集',
           'アパレルEC → 商品画像から映える宣伝リールを量産'],
    detail:{problem:'リール動画は編集ソフトの操作に慣れが要り、毎回の制作に時間がかかっていた。',
-           result:'素材を渡すだけでRemotion+FFmpegが15/30/60秒のリールを自動書き出し。字幕焼き込みや音声ミックスにも対応。'}},
+           result:'素材を渡すだけでRemotion+FFmpegが15/30/60秒のリールを自動書き出し。字幕焼き込みや音声ミックスにも対応。'}, change:{before:'編集ソフトの操作習得が必要で、リール制作に毎回時間',after:'素材を渡すだけで15/30/60秒のリールを自動書き出し'}},
 
   // 🌐 Web制作（HP・LP）
   {title:'入会促進LP', cat:'web', status:'public',
@@ -471,7 +484,7 @@ const PROJECTS = [
           '学習塾・スクール → 体験入学の申込ページをスマホ最適化',
           'イベント主催 → 単発セミナーの参加申込専用ページ'],
    detail:{problem:'入会・申込の受け皿となるページがなく、興味を持った人を取りこぼしていた。',
-           result:'SVGアイコン化・スマホ最適化・申込導線の改善まで施した1枚LPを公開した。'}},
+           result:'SVGアイコン化・スマホ最適化・申込導線の改善まで施した1枚LPを公開した。'}, change:{before:'入会希望者の受け皿ページがなく見込み客を取りこぼし',after:'スマホ最適化と導線改善を施した1枚LPで申込受付'}},
   {title:'AI・DXコンサルLP', cat:'web', status:'public',
    lead:'法人向けAI・DX導入支援のLP。名刺裏のQRから読んでもらう営業導線として制作。',
    target:'AI・DX導入を検討する法人・事業者', tech:'HTML / CSS（レスポンシブ）/ GitHub Pages',
@@ -481,7 +494,7 @@ const PROJECTS = [
           '士業 → サービス内容と問合せ導線の紹介ページ',
           '自治体・団体 → DX支援メニューの案内ページ'],
    detail:{problem:'AI・DX支援の中身と相談導線を伝える場がなく、名刺だけでは伝わりにくかった。',
-           result:'名刺裏のQRから飛べるLPを制作。サービス内容と問合せ導線を1ページに集約した。'}},
+           result:'名刺裏のQRから飛べるLPを制作。サービス内容と問合せ導線を1ページに集約した。'}, change:{before:'名刺だけではAI・DX支援の内容と相談先が伝わらず',after:'名刺QRで開くLP1枚にサービスと問合せ導線を集約'}},
   {title:'事業者チームHP制作', cat:'web', status:'plan',
    lead:'事業者メンバーのチームページをWordPress + SWELLで構築（約50ページ想定）。',
    target:'事業者コミュニティ', tech:'WordPress / SWELLテーマ / 固定ページ親子構成（約50ページ設計）',
@@ -490,7 +503,7 @@ const PROJECTS = [
           '美容サロン → スタイリスト別の指名・実績紹介ページ',
           'クリニック → 医師・スタッフ紹介と専門分野ページを整備'],
    detail:{problem:'事業者メンバーを紹介する場がなく、実績や強みを外部に伝えられていなかった。',
-           result:'WordPress+SWELLでメンバー別プロフィール＋実績ページを量産する設計（約50ページ・着手前）。'}},
+           result:'WordPress+SWELLでメンバー別プロフィール＋実績ページを量産する設計（約50ページ・着手前）。'}, change:{before:'メンバーの実績や強みを外部に伝える場が無い状態',after:'メンバー別の実績ページをSWELLで量産する設計（着手前）'}},
 
   {title:'WordPress移転', cat:'web', status:'done',
    lead:'ホームページ・ビルダー製サイトをWordPress（SWELL）へ移行。固定ページ・記事・画像を移管。',
@@ -500,7 +513,7 @@ const PROJECTS = [
           '地域団体 → 更新しやすいWordPressへ既存サイト移行',
           '中小企業 → 記事や画像を保ったままCMSへ引っ越し'],
    detail:{problem:'ホームページ・ビルダー製の旧サイトは更新が難しく、構成や記事を保ったまま移行する必要があった。',
-           result:'WXR形式でページ・記事・画像を移行しSWELLテーマで再構築。WP API用スクリプトで投稿の調整も自動化した。'}},
+           result:'WXR形式でページ・記事・画像を移行しSWELLテーマで再構築。WP API用スクリプトで投稿の調整も自動化した。'}, change:{before:'ビルダー製サイトは更新が難しく移行も手作業',after:'WXRで構成ごと移行しSWELLで再構築、調整も自動化'}},
 
   // 🎮 ゲーム・エンタメ
   {title:'2Dアクションゲーム（第2弾・全8ワールド）', cat:'game', status:'done',
@@ -512,7 +525,7 @@ const PROJECTS = [
           '企業周年イベント → 自社史を8ワールドで辿る記念ゲーム',
           '展示会ブース → 自社キャラ操作のハイスコア集客ゲーム'],
    detail:{problem:'ブラウザで本格的に遊べる2Dアクションを、拡張しやすい構成で作りたかった（趣味開発）。',
-           result:'全8ワールド・ボス2形態・ショップ等を実装。Vite構成でステージや見た目を差し替え可能。'}},
+           result:'全8ワールド・ボス2形態・ショップ等を実装。Vite構成でステージや見た目を差し替え可能。'}, change:{before:'本格2Dアクションを既製品やテンプレ頼みで作る状態',after:'全8ワールド・ボス2形態を自作。ステージ差し替え可'}},
   {title:'テトリス', cat:'game', status:'done',
    lead:'シンプルなテトリス。キーボード操作・ハードドロップ対応。',
    target:'趣味・実験', tech:'バニラJS / Canvas 2D / 単一HTMLファイル',
@@ -521,7 +534,7 @@ const PROJECTS = [
           '商業施設 → 待ち時間に遊ぶハイスコア競争イベント',
           '学校教材 → 図形・空間認識を鍛える導入ゲーム'],
    detail:{problem:'定番の落ち物パズルを、素のJavaScriptで作り切る練習として制作した。',
-           result:'キーボード操作・ハードドロップ対応のテトリスを単一HTMLで完成させた。'}},
+           result:'キーボード操作・ハードドロップ対応のテトリスを単一HTMLで完成させた。'}, change:{before:'落ち物パズルは既製品頼みで自作の実装経験なし',after:'素のJSのみでテトリスを単一HTMLに内製'}},
   {title:'波乱万丈人生ゲーム', cat:'game', status:'done',
    lead:'2〜6人でパス＆プレイできる、すごろく型の人生ゲーム。',
    target:'友人・家族で遊ぶ', tech:'HTML / CSS / バニラJS / パス＆プレイ（1台で2〜6人）',
@@ -531,7 +544,7 @@ const PROJECTS = [
           '地域活性 → 移住者の暮らしを学ぶ定住シミュすごろく',
           '金融教育 → 収支イベントで学ぶお金の人生すごろく'],
    detail:{problem:'1台を回して大人数で盛り上がれる、手軽なパーティゲームが欲しかった。',
-           result:'2〜6人パス＆プレイのすごろくを完成。マス目のイベントやストーリーは差し替え可能。'}},
+           result:'2〜6人パス＆プレイのすごろくを完成。マス目のイベントやストーリーは差し替え可能。'}, change:{before:'大人数で手軽に遊べる市販パーティゲームに頼る状態',after:'1台で2〜6人遊べ、イベントも差し替え可能なすごろくを内製'}},
 
   {title:'SD戦国武将列伝', cat:'game', status:'done',
    lead:'戦国時代の国盗りを再現したシミュレーションゲーム。49カ国を制して天下統一を目指す。',
@@ -541,7 +554,7 @@ const PROJECTS = [
           '地域PR → ご当地の城・武将を題材にした国盗りゲーム',
           'イベント出展 → レトロ風SLGでブース滞在時間を延ばす'],
    detail:{problem:'名作SLGの仕組みを、外部素材に頼らず一から再現できるか挑戦したかった（趣味開発）。',
-           result:'全49カ国の制圧・後継システム・天下統一／家滅亡エンディングまで実装。描画もBGMも完全自作で通しプレイ可能。'}},
+           result:'全49カ国の制圧・後継システム・天下統一／家滅亡エンディングまで実装。描画もBGMも完全自作で通しプレイ可能。'}, change:{before:'名作SLGの仕組み、外部素材頼みで再現困難',after:'49カ国制圧から天下統一まで完全自作で内製'}},
   {title:'信州買収ゲーム', cat:'game', status:'done',
    lead:'名作RPGの「トレード」を長野県舞台に再現した企業買収SLG。リアルタイムの綱引きバトル搭載。',
    target:'趣味・実験（Android）', tech:'Flutter / Dart（provider・shared_preferences）/ 実時間バトルエンジン / 自作合成音源',
@@ -550,7 +563,7 @@ const PROJECTS = [
           'ビジネス教育 → M&Aや資金繰りを体感する学習ゲーム',
           'イベント企画 → 地域を舞台に遊べる集客ゲーム'],
    detail:{problem:'名作のミニゲーム「トレード」の手触り（リアルタイムの綱引き）を忠実に再現したかった。',
-           result:'競り合いを実時間エンジンで再現し、13種のかけひき技・グループ技・3期構成を実装。音源も全自作でAPKまでビルド済み。'}},
+           result:'競り合いを実時間エンジンで再現し、13種のかけひき技・グループ技・3期構成を実装。音源も全自作でAPKまでビルド済み。'}, change:{before:'名作RPGのトレードを遊ぶ既製品頼み',after:'綱引きや13技を自社で自由に内製化'}},
 
   // 🛠 その他ツール
   {title:'インスタ用画像加工ツール', cat:'tool', status:'public',
@@ -562,7 +575,7 @@ const PROJECTS = [
           'アパレルEC → 商品画像を9:16に整えストーリーズ配信',
           '不動産仲介 → 物件写真を1:1に統一しインスタ掲載'],
    detail:{problem:'スマホからSNS用に、余白付き正方形や縦長画像を手軽に作りたかった。',
-           result:'1:1／9:16整形・ぼかし・明るさ・ピンチズームに対応。Web Share APIでスマホ保存も実装し公開。'}},
+           result:'1:1／9:16整形・ぼかし・明るさ・ピンチズームに対応。Web Share APIでスマホ保存も実装し公開。'}, change:{before:'SNS用の正方形・縦長画像をスマホで手軽に作れない',after:'1:1／9:16整形・ぼかし・明るさ補正をスマホで完結し保存'}},
 
   {title:'イベント申込システム生成スキル', cat:'tool', status:'done',
    lead:'新しい大会・交流会のWeb申込システム一式を、ヒアリングから自動生成する制作スキル。',
@@ -572,7 +585,7 @@ const PROJECTS = [
           '自治体イベント → 住民向けWeb申込システムを即構築',
           'セミナー主催 → 受付フォームと控えメールを自動作成'],
    detail:{problem:'大会ごとに申込フォームとバックエンドを一から作ると時間がかかり、設定漏れも起きやすかった。',
-           result:'第13回大会の本番コードをテンプレ化。ヒアリング→15項目の置換でフォーム＋GAS一式を新規生成できるスキルにした。'}},
+           result:'第13回大会の本番コードをテンプレ化。ヒアリング→15項目の置換でフォーム＋GAS一式を新規生成できるスキルにした。'}, change:{before:'大会ごとに申込フォームとGASを一から構築、手間も設定漏れも多発',after:'ヒアリングと15項目置換でフォーム＋GAS一式を自動生成'}},
   {title:'ダウンロード自動振り分け', cat:'tool', status:'done',
    lead:'ダウンロードフォルダの新規ファイルを種類別フォルダへ自動で振り分ける常駐ツール。',
    target:'PC作業の効率化', tech:'PowerShell / FileSystemWatcher（常駐監視）/ VBS無音起動 / スタートアップ登録',
@@ -581,7 +594,7 @@ const PROJECTS = [
           '士業事務所 → 受領ファイルをフォルダ別に自動仕分け',
           '設計事務所 → 図面や資料の散らかりを常駐で防止'],
    detail:{problem:'ダウンロードフォルダにファイルが溜まり、毎回手で整理するのが面倒で散らかりがちだった。',
-           result:'新規ダウンロードを検知し画像・書類・圧縮などへ自動振り分け。DL途中ファイルは触らず、スタートアップ常駐にも対応。'}},
+           result:'新規ダウンロードを検知し画像・書類・圧縮などへ自動振り分け。DL途中ファイルは触らず、スタートアップ常駐にも対応。'}, change:{before:'DLフォルダにファイルが溜まり手作業で整理、散らかりがち',after:'新規DLを検知し画像・書類等へ常駐で自動振り分け'}},
 
   // ▼ 新しいプロジェクトはここに追加（オブジェクトを1つ）▼
 ];
@@ -775,7 +788,7 @@ function openModal(p){
     ),
   ];
   if(p.url) kids.push(h('a',{class:'m-go', href:p.url, target:'_blank', rel:'noopener'}, 'サイトを開く ', h('span',{text:'↗'})));
-  modalBody.replaceChildren(...kids);
+  modalBody.replaceChildren(...kids.filter(Boolean));
   modal.hidden=false; document.body.style.overflow='hidden';
   modal.querySelector('.modal-x').focus();
 }
