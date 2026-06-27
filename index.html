@@ -170,6 +170,36 @@
   .chg-a .lab{color:#fff; background:var(--shu); border:1px solid var(--shu)}
   .chg-a .t{color:var(--ink); font-weight:500}
 
+  /* Before→After ショーケース */
+  .showcase{padding:clamp(24px,4vw,38px) 0 4px}
+  .sc-head{display:flex; align-items:baseline; gap:12px; margin-bottom:16px; flex-wrap:wrap}
+  .sc-head .jp{font-family:var(--serif); font-size:clamp(18px,2.6vw,23px); font-weight:700; color:var(--ink)}
+  .sc-head .en{font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--shu); text-transform:uppercase}
+  .sc-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:14px}
+  .sc-card{background:var(--paper-card); border:1px solid var(--line); border-top:3px solid var(--shu); border-radius:8px; padding:16px 16px 15px}
+  .sc-cat{font-family:var(--mono); font-size:10px; letter-spacing:.1em; color:var(--muted); text-transform:uppercase; margin-bottom:11px}
+  .sc-row{display:flex; gap:9px; align-items:baseline; font-size:12.5px; line-height:1.62; padding:4px 0}
+  .sc-row .lab{flex:none; font-family:var(--mono); font-size:9px; letter-spacing:.06em; padding:1.5px 7px; border-radius:3px; position:relative; top:-1px}
+  .sc-b .lab{color:var(--muted); border:1px solid var(--line)}
+  .sc-b .t{color:var(--ink-2)}
+  .sc-a .lab{color:#fff; background:var(--shu); border:1px solid var(--shu)}
+  .sc-a .t{color:var(--ink); font-weight:500}
+  .sc-foot{margin:15px 0 0; font-size:12.5px; color:var(--ink-2)}
+  .sc-foot b{color:var(--shu); font-family:var(--serif); font-size:15px}
+  @media (max-width:760px){ .sc-grid{grid-template-columns:1fr} }
+
+  /* 相談CTA */
+  .cta{padding:clamp(34px,6vw,58px) 0}
+  .cta-inner{background:var(--ink); border-radius:12px; padding:clamp(28px,5vw,46px); text-align:center}
+  .cta-k{font-family:var(--mono); font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--shu-tint); margin-bottom:12px}
+  .cta-inner h2{font-family:var(--serif); font-weight:700; font-size:clamp(22px,3.6vw,32px); margin:0 0 14px; color:#fff; line-height:1.35}
+  .cta-inner p{max-width:560px; margin:0 auto 24px; font-size:14px; line-height:1.9; color:rgba(255,255,255,.82)}
+  .cta-btn{display:inline-flex; align-items:center; gap:10px; background:var(--shu); color:#fff; font-family:var(--sans); font-weight:700; font-size:16px; padding:15px 34px; border-radius:999px; text-decoration:none; transition:transform .15s, box-shadow .15s; box-shadow:0 6px 20px rgba(192,57,43,.35)}
+  .cta-btn:hover{transform:translateY(-2px); box-shadow:0 10px 26px rgba(192,57,43,.45)}
+  .cta-arr{transition:transform .15s}
+  .cta-btn:hover .cta-arr{transform:translateX(3px)}
+  .cta-note{margin-top:15px; font-family:var(--mono); font-size:11px; letter-spacing:.05em; color:rgba(255,255,255,.6)}
+
   .card-foot{margin-top:auto; display:flex; align-items:center; justify-content:space-between; gap:10px; padding-top:6px}
   .go{display:inline-flex; align-items:center; gap:8px; font-family:var(--mono); font-size:12px; letter-spacing:.06em; color:var(--shu); text-decoration:none}
   .go .arr{transition:transform .3s}
@@ -254,11 +284,33 @@
 </div></div>
 
 <header class="hero"><div class="wrap">
-  <div class="kicker">Selected Works ／ 2024 — 2026</div>
-  <h1>つくった<wbr>もの、<br>ぜんぶ。<span class="en">A Working Archive</span></h1>
-  <p class="intro">バドミントンの現場で使う道具から、毎日の業務を肩代わりする<b>自動化</b>、Webサイト、ゲームまで。手を動かして形にしてきた制作物を索引にまとめ、それぞれ <span class="mk">どの業種でどう活かせるか</span> も添えました。カードを押すと課題・成果まで読めます。</p>
+  <div class="kicker">AI・DXで業務を自動化 ／ 制作実績</div>
+  <h1>その手作業、<br><wbr>しくみに変えます。<span class="en">From Manual Work to Automation</span></h1>
+  <p class="intro">紙やExcelの管理、手作業の集計、属人化した業務、連絡やリマインドの抜け——そうした <span class="mk">毎日の&quot;手間&quot;</span> を、自動化やAIで肩代わりしてきました。実際に現場で動いている実績を、それぞれ <b>〈以前 → 今〉</b> の変化つきで紹介します。気になるものはカードを押すと詳しく読めます。</p>
   <div class="stats" id="stats"></div>
 </div></header>
+
+<section class="showcase"><div class="wrap">
+  <div class="sc-head"><span class="jp">こんな&quot;手作業&quot;を、こう変えました</span><span class="en">Before → After</span></div>
+  <div class="sc-grid">
+    <article class="sc-card">
+      <div class="sc-cat">タスク・期限管理</div>
+      <div class="sc-row sc-b"><span class="lab">以前</span><span class="t">口頭やバラバラのツールで依頼、抜け漏れと催促の手間が常態化</span></div>
+      <div class="sc-row sc-a"><span class="lab">今</span><span class="t">LINEで登録・通知・期限前リマインドが自動で回り、担当10名が日常利用</span></div>
+    </article>
+    <article class="sc-card">
+      <div class="sc-cat">見積作成</div>
+      <div class="sc-row sc-b"><span class="lab">以前</span><span class="t">手書き見積をExcelに清書、転記ミスや単価のばらつき</span></div>
+      <div class="sc-row sc-a"><span class="lab">今</span><span class="t">PDFを707品目の辞書と照合し、Excel見積書を自動生成</span></div>
+    </article>
+    <article class="sc-card">
+      <div class="sc-cat">SEO記事制作</div>
+      <div class="sc-row sc-b"><span class="lab">以前</span><span class="t">構成・執筆・校閲・画像・入稿に多くの工数と熟練が必要</span></div>
+      <div class="sc-row sc-a"><span class="lab">今</span><span class="t">キーワードから分析〜執筆〜校閲〜画像〜下書き投稿まで自動</span></div>
+    </article>
+  </div>
+  <p class="sc-foot">この3例を含む <b>29</b> 件すべてを、〈以前 → 今〉つきで下に掲載しています。</p>
+</div></section>
 
 <nav class="controls"><div class="wrap">
   <button class="filter-toggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="filterBody">
@@ -289,11 +341,21 @@
   <div class="empty" id="empty">該当する制作物がありません。</div>
 </main>
 
+<section class="cta"><div class="wrap">
+  <div class="cta-inner">
+    <div class="cta-k">AI・DX 導入のご相談</div>
+    <h2>その手間、いっしょに減らしませんか。</h2>
+    <p>「これ、ウチでもできる？」と思ったら、お気軽にどうぞ。現状をお聞きして、自動化できそうな業務を一緒に洗い出します。名刺のQRからお越しの方も、このままご相談いただけます。</p>
+    <a class="cta-btn" href="https://lin.ee/Vrf2pXv" target="_blank" rel="noopener">LINEで相談する <span class="cta-arr">→</span></a>
+    <div class="cta-note">初回相談は無料 ／ 売り込みはしません</div>
+  </div>
+</div></section>
+
 <footer><div class="wrap">
   <div class="legend" id="legend"></div>
   <div class="colo">
     <b>制作物アーカイブ</b>
-    Last updated 2026.06.23<br>
+    Last updated 2026.06.28<br>
     Built as a single HTML file
   </div>
 </div></footer>
@@ -600,11 +662,11 @@ const PROJECTS = [
 ];
 
 const CATS = [
-  {key:'badminton',  jp:'バドミントン運営支援', en:'Sports Operations'},
-  {key:'automation', jp:'業務自動化・AI活用',  en:'Automation & AI'},
-  {key:'web',        jp:'Web制作',             en:'Web & Landing'},
-  {key:'game',       jp:'ゲーム・エンタメ',     en:'Games'},
-  {key:'tool',       jp:'その他ツール',         en:'Utilities'},
+  {key:'automation', jp:'業務自動化・AI活用',     en:'Automation & AI'},
+  {key:'tool',       jp:'業務効率化ツール',       en:'Utilities'},
+  {key:'web',        jp:'Web制作・集客',         en:'Web & Landing'},
+  {key:'badminton',  jp:'現場オペレーション支援', en:'On-site Operations'},
+  {key:'game',       jp:'ゲーム・エンタメ',       en:'Games'},
 ];
 const STATUS = {
   live:   {jp:'本番稼働', cls:'live'}, public: {jp:'公開中', cls:'public'},
