@@ -5,6 +5,8 @@ AI活用・業務自動化・Web制作の相談につなげる、根津仁志の
 
 🔗 **公開サイト**: https://sasukewebjob-ai.github.io/portfolio/
 
+相談LINE： https://lin.ee/NFymCKmH （2026-09-10、AIコンサルLPと共通窓口に統一）
+
 ## ページの流れ
 
 1. 何を相談できるか・自動化の具体例
