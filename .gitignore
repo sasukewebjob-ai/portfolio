@@ -6,3 +6,6 @@ Thumbs.db
 .DS_Store
 desktop.ini
 *.tmp
+
+# Codexの画像生成の元のPNG（Web用は img/）
+originals/
